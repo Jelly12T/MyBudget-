@@ -20,6 +20,8 @@ struct OverviewView: View {
                 MonthlySummaryCard(type: .income, amount: 100_000_000)
                 MonthlySummaryCard(type: .expense, amount: 100_000_000)
             }
+            
+            WeeklySummaryCard()
         }
         .background(AppColors.backGroundColor)
         .onAppear {

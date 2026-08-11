@@ -18,4 +18,7 @@ struct AppColors {
     static let labelPrimary = Color("FFFFFF")
     static let labelSecondary = Color("EBEBF5").opacity(0.6)
     static let labelTertiary = Color("EBEBF5").opacity(0.45)
+    
+    //Chart
+    static let chartDefault = Color("48484A")
 }

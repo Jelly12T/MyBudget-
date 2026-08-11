@@ -11,12 +11,19 @@ struct OverviewView: View {
     @ObservedObject private var viewModel = OverviewViewModel()
     
     var body: some View {
-        HStack {
+        VStack {
             OverviewHeaderView(greetingString: self.viewModel.greetingString,
                                mothString: self.viewModel.monthString)
+            OverViewMoneyCard(total: 150_000_000,
+                              spend: 45_000_000)
         }
+        .background(AppColors.backGroundColor)
         .onAppear {
             self.viewModel.onAppear()
         }
     }
+}
+
+#Preview {
+    OverviewView()
 }

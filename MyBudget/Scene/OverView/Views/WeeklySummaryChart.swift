@@ -34,7 +34,8 @@ struct WeeklySummaryChart: View {
                 .annotation(position: .top) {
                     Text("\(Int(item.count))")
                         .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(AppColors.chartDefault)
+                        .foregroundStyle(self.selectedValue == item.type
+                                         ? Color.white : AppColors.chartDefault)
                 }
                 .foregroundStyle(
                     self.selectedValue == item.type
@@ -44,19 +45,32 @@ struct WeeklySummaryChart: View {
             }
         }
         .chartXAxis {
-            AxisMarks { _ in
+            AxisMarks { value in
                 AxisGridLine()
                     .foregroundStyle(.clear)
                 AxisValueLabel()
-                    .foregroundStyle(AppColors.chartDefault)
+                    .foregroundStyle(value.as(String.self) == self.selectedValue
+                                     ? Color.white : AppColors.chartDefault)
                     .font(.system(size: 14, weight: .semibold))
             }
         }
-        .chartXSelection(value: self.$selectedValue)
         .chartYAxis(.hidden)
         .padding(6)
         .background(.clear)
-        
+        .chartOverlay { proxy in
+            GeometryReader { _ in
+                Rectangle()
+                    .fill(.clear)
+                    .contentShape(Rectangle())
+                    .onTapGesture { point in
+                        guard let type: String = proxy.value(atX: point.x) else {
+                            return
+                        }
+                        
+                        self.selectedValue = type
+                    }
+            }
+        }
     }
 }
 

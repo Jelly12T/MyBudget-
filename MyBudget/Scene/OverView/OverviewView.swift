@@ -11,7 +11,7 @@ struct OverviewView: View {
     @ObservedObject private var viewModel = OverviewViewModel()
     
     var body: some View {
-        VStack {
+        ScrollView {
             OverviewHeaderView(greetingString: self.viewModel.greetingString,
                                mothString: self.viewModel.monthString)
             OverViewMoneyCard(total: 150_000_000,
@@ -22,6 +22,8 @@ struct OverviewView: View {
             }
             
             WeeklySummaryCard()
+            HomeMyWalletView()
+            HomeMyWalletView()
         }
         .background(AppColors.backGroundColor)
         .onAppear {

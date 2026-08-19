@@ -55,7 +55,7 @@ enum HomeTabBar: CaseIterable, Identifiable  {
         case .overView:
             OverviewView()
         case .noteBook:
-            OverviewView()
+            TransactionNoteBookView()
         case .analyst:
             OverviewView()
         case .budget:

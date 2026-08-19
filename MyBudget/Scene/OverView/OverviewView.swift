@@ -23,7 +23,7 @@ struct OverviewView: View {
             
             WeeklySummaryCard()
             HomeMyWalletView()
-            HomeMyWalletView()
+            RecentSpendingView()
         }
         .background(AppColors.backGroundColor)
         .onAppear {
@@ -32,6 +32,3 @@ struct OverviewView: View {
     }
 }
 
-#Preview {
-    OverviewView()
-}
